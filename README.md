@@ -1,3 +1,12 @@
+modified php-phantomjs v3.1.5
+
+bugfixes
+- phantom returns redirects as redirectU**RL**. the php wrapper expects redirectU**rl**
+
+development branch: [iranai]
+
+[iranai]: https://github.com/koenokatachi/php-phantomjs/tree/iranai
+
 PHP PhantomJS
 =============
 
