@@ -117,7 +117,7 @@ class Procedure implements ProcedureInterface
 
             proc_close($process);
 			
-			$contentMarker = $request->getContentMarker();
+			$contentMarker = constant(get_class($request).'::CONTENT_MARKER');
 			$_n = strlen($contentMarker);
 			if (($_l=strpos($result,$contentMarker)) !== false && ($_r=strpos($result,$contentMarker,$_l+$_n)) !== false){
 				//Extract content wrapped into the markers

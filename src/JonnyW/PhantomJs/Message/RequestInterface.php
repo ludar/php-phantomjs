@@ -26,6 +26,9 @@ interface RequestInterface
 
     const REQUEST_TYPE_DEFAULT = 'default';
     const REQUEST_TYPE_CAPTURE = 'capture';
+	
+	//used to wrap in phantom's json output 
+	const CONTENT_MARKER = '32729cf93cfa2b83ce1735de6bbf6c8f';
 
     /**
      * Get request type
