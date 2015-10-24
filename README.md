@@ -2,7 +2,7 @@ modified php-phantomjs v3.1.5
 
 features:
 - ability to limit CPU time (in seconds) for phantom process with softlimit ```$client()->setCPUTimeLimit(N)```
-- sometimes phantom dumps js errors into stdout effectively breaking any actual json output. Now procedures can wrap actual json output with $request's constant CONTENT_MARKER. The content is automaticly extracted when the markers are detected
+- sometimes phantom dumps js errors into stdout effectively breaking any actual json output. Now procedures can wrap actual json output with ```$request```'s constant ```CONTENT_MARKER```. The content is automaticly extracted when the markers are detected
 
 development branch: [iranai]
 
