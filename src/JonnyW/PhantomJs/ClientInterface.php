@@ -146,4 +146,7 @@ interface ClientInterface
      * @access public
      */
     public function clearLog();
+	
+	public function getCPUTimeLimit();
+	public function setCPUTimeLimit( $sec);
 }

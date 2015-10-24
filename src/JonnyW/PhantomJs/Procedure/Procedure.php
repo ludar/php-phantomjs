@@ -98,7 +98,11 @@ class Procedure implements ProcedureInterface
                 array('pipe', 'w')
             );
 
-            $process = proc_open(escapeshellcmd(sprintf('%s %s', $client->getCommand(), $executable)), $descriptorspec, $pipes, null, null);
+			$process = proc_open(escapeshellcmd(sprintf('%s %s %s',
+					($_=$client->getCPUTimeLimit()) ? 'softlimit -t '.$_ : '',
+					$client->getCommand(),
+					$executable)
+				), $descriptorspec, $pipes, null, null);
 
             if (!is_resource($process)) {
                 throw new ProcedureFailedException('proc_open() did not return a resource');
@@ -112,6 +116,13 @@ class Procedure implements ProcedureInterface
             fclose($pipes[2]);
 
             proc_close($process);
+			
+			$contentMarker = $request->getContentMarker();
+			$_n = strlen($contentMarker);
+			if (($_l=strpos($result,$contentMarker)) !== false && ($_r=strpos($result,$contentMarker,$_l+$_n)) !== false){
+				//Extract content wrapped into the markers
+				$result = substr($result,$_l+$_n,$_r-$_l-$_n);
+			}
 
             $response->import(
                 $this->parser->parse($result)

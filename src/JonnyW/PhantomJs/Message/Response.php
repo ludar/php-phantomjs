@@ -94,8 +94,6 @@ class Response implements ResponseInterface
                 continue;
             }
 
-            if ($param === 'redirectURL') $param = 'redirectUrl';
-
             if (property_exists($this, $param)) {
                 $this->$param = $value;
             }
