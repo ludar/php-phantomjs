@@ -98,7 +98,10 @@ class Procedure implements ProcedureInterface
                 array('pipe', 'w')
             );
 
-			$process = proc_open(escapeshellcmd(sprintf('%s %s %s',
+			$process = proc_open(escapeshellcmd(sprintf('%s %s %s %s',
+					//Limit running time. additionally send SIGKILL if still running in 5 secs after initial timeout.
+					($_=$client->getRunningTimeLimit()) ? 'timeout '.$_.' -k 5 ' : '',
+					//Limit cpu overuse
 					($_=$client->getCPUTimeLimit()) ? 'softlimit -t '.$_ : '',
 					$client->getCommand(),
 					$executable)

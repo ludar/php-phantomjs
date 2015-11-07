@@ -149,4 +149,6 @@ interface ClientInterface
 	
 	public function getCPUTimeLimit();
 	public function setCPUTimeLimit( $sec);
+	public function getRunningTimeLimit();
+	public function setRunningTimeLimit( $sec);
 }

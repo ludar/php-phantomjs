@@ -95,6 +95,7 @@ class Client implements ClientInterface
     protected $options;
 	
 	protected $CPUTimeLimit;
+	protected $runningTimeLimit;
 
     /**
      * Internal constructor
@@ -112,6 +113,7 @@ class Client implements ClientInterface
         $this->phantomLoader   = '%s/phantomloader';
         $this->options         = array();
 		$this->CPUTimeLimit    = 0;
+		$this->runningTimeLimit  = 0;
     }
 
     /**
@@ -393,6 +395,13 @@ class Client implements ClientInterface
 	}
 	public function setCPUTimeLimit( $sec){
 		$this->CPUTimeLimit = $sec;
+		return $this;
+	}
+	public function getRunningTimeLimit(){
+		return $this->runningTimeLimit;
+	}
+	public function setRunningTimeLimit( $sec){
+		$this->runningTimeLimit = $sec;
 		return $this;
 	}
 }
